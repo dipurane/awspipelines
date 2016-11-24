@@ -20,18 +20,19 @@ if [ ! -d /backup ]; then
   echo "sudo mount -t nfs -o nfsvers=4.1 -o rsize=1048576 -o wsize=1048576 -o timeo=600 -o retrans=2 -o hard $source /backup"
   sudo mount -t nfs -o nfsvers=4.1 -o rsize=1048576 -o wsize=1048576 -o timeo=600 -o retrans=2 -o hard $source /backup
 fi
+sleep 10
 if [ ! -d /mnt/backups ]; then
   echo 'sudo mkdir /mnt/backups'
   sudo mkdir /mnt/backups
   echo "sudo mount -t nfs -o nfsvers=4.1 -o rsize=1048576 -o wsize=1048576 -o timeo=600 -o retrans=2 -o hard $destination /mnt/backups"
   sudo mount -t nfs -o nfsvers=4.1 -o rsize=1048576 -o wsize=1048576 -o timeo=600 -o retrans=2 -o hard $destination /mnt/backups
 fi
-
+sleep 10
 if [ -f /tmp/efs-restore.log ]; then
   echo "sudo rm /tmp/efs-restore.log"
   sudo rm /tmp/efs-restore.log
 fi
-
+sleep 20
 #Copy all content this node is responsible for
 for myContent in `sudo ls -a --ignore . --ignore .. /mnt/backups/$efsid/$interval.$backupNum | awk 'NR%'$numClients==$clientNum`; do
   echo "sudo rsync -ah --stats --delete --numeric-ids --log-file=/tmp/efs-restore.log /mnt/backups/$efsid/$interval.$backupNum /backup/"
