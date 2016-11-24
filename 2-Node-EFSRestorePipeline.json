@@ -47,7 +47,7 @@
             "id": "RestorePart1",
             "name": "RestorePart1",
             "runsOn": {"ref": "EC2Resource1"},
-            "command": "wget https://raw.githubusercontent.com/awslabs/data-pipeline-samples/master/samples/EFSBackup/efs-restore-rsync.sh\nchmod a+x efs-restore-rsync.sh\n./efs-restore-rsync.sh $1 $2 $3 $4 $5 $6 $7",
+            "command": "wget https://raw.githubusercontent.com/dipurane/awspipelines/master/efs-restore-rsync.sh\nchmod a+x efs-restore-rsync.sh\n./efs-restore-rsync.sh $1 $2 $3 $4 $5 $6 $7",
             "scriptArgument": [
                 "#{myEfsSource}",
                 "#{myEfsBackup}",
@@ -64,7 +64,7 @@
             "id": "RestorePart2",
             "name": "RestorePart2",
             "runsOn": {"ref": "EC2Resource2"},
-            "command": "wget https://raw.githubusercontent.com/awslabs/data-pipeline-samples/master/samples/EFSBackup/efs-restore-rsync.sh\nchmod a+x efs-restore-rsync.sh\n./efs-restore-rsync.sh $1 $2 $3 $4 $5 $6 $7",
+            "command": "wget https://raw.githubusercontent.com/dipurane/awspipelines/master/efs-restore-rsync.sh\nchmod a+x efs-restore-rsync.sh\n./efs-restore-rsync.sh $1 $2 $3 $4 $5 $6 $7",
             "scriptArgument": [
                 "#{myEfsSource}",
                 "#{myEfsBackup}",
