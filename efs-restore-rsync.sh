@@ -8,7 +8,7 @@ backupNum=$4
 efsid=$5
 clientNum=$6
 numClients=$7
-
+WEBDIR=/mnt/backups/rsync/hourly.1
 
 # Prepare system for rsync
 echo 'sudo yum -y install nfs-utils'
@@ -32,7 +32,20 @@ if [ -f /tmp/efs-restore.log ]; then
   echo "sudo rm /tmp/efs-restore.log"
   sudo rm /tmp/efs-restore.log
 fi
+
+echo "Slepping for 20 Seconds"
+
 sleep 20
+
+echo "Slept for 20 Seconds"
+
+if [ -d "$WEBDIR" ]; then
+  echo "$WEBDIR exists; Directory mounted"
+else
+  echo "$WEBDIR Doesnt exists; Directory not mounted"
+fi
+
+
 #Copy all content this node is responsible for
   echo "sudo rsync -ah --stats --delete --numeric-ids --log-file=/tmp/efs-restore.log /mnt/backups/$efsid/$interval.$backupNum /backup/"
   sudo rsync -ah --stats --delete --numeric-ids --log-file=/tmp/efs-restore.log /mnt/backups/$efsid/$interval.$backupNum/$myContent /backup/
