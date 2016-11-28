@@ -14,11 +14,11 @@ WEBDIR=/mnt/backups/rsync/hourly.1
 echo 'sudo yum -y install nfs-utils'
 sudo yum -y install nfs-utils
 
-if [ ! -d /backup ]; then
+if [ ! -d /mnt/backup ]; then
   echo 'sudo mkdir /backup'
-  sudo mkdir /backup
-  echo "sudo mount -t nfs -o nfsvers=4.1 -o rsize=1048576 -o wsize=1048576 -o timeo=600 -o retrans=2 -o hard $source /backup"
-  sudo mount -t nfs -o nfsvers=4.1 -o rsize=1048576 -o wsize=1048576 -o timeo=600 -o retrans=2 -o hard $source /backup
+  sudo mkdir /mnt/backup
+  echo "sudo mount -t nfs -o nfsvers=4.1 -o rsize=1048576 -o wsize=1048576 -o timeo=600 -o retrans=2 -o hard $source /mnt/backup"
+  sudo mount -t nfs -o nfsvers=4.1 -o rsize=1048576 -o wsize=1048576 -o timeo=600 -o retrans=2 -o hard $source /mnt/backup
 fi
 sleep 10
 if [ ! -d /mnt/backups ]; then
