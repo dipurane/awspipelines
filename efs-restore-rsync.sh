@@ -44,6 +44,9 @@ if [ -d "$WEBDIR" ]; then
 else
   echo "$WEBDIR Doesnt exists; Directory not mounted"
 fi
+echo "Priniting /proc/mounts"
+
+cat /proc/mounts
 
 #Copy all content this node is responsible for
 for myContent in `sudo ls -a --ignore . --ignore .. /mnt/backups/$efsid/$interval.$backupNum | awk 'NR%'$numClients==$clientNum`; do
