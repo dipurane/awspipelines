@@ -1,2 +1,2 @@
-  # awspipelines.
-.This is to test AWS Pipelines
+# awspipelines.
+This is to test AWS Pipelines
